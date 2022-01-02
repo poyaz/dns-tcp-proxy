@@ -1,0 +1,17 @@
+# Created by .ignore support plugin (hsz.mobi)
+
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+
+.idea/
+
+.tests/
+
+storage/tmp/*
+!storage/temp/.gitkeep
+
+docker/custom/*
+!docker/custom/.gitkeep
+
+docker/docker-compose.local*

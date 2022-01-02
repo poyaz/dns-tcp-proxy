@@ -1,0 +1,13 @@
+version: "2.3"
+services:
+  proxy:
+    image: envoyproxy/envoy-alpine:v1.20.0
+    volumes:
+      - ${PWD}/storage/conf/envoy:/etc/envoy
+    networks:
+      main: { }
+    restart: "always"
+
+networks:
+  main:
+    driver: bridge

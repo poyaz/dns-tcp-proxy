@@ -1,0 +1,19 @@
+version: "2.3"
+services:
+  proxy:
+    ports:
+      - 80:10080
+      - 443:10443
+    depends_on:
+      - app
+    restart: "no"
+
+  app:
+    image: ealen/echo-server:latest
+    networks:
+      main: { }
+    restart: "no"
+
+networks:
+  main:
+    driver: bridge
