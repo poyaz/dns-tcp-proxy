@@ -2,8 +2,24 @@ version: "2.3"
 services:
   proxy:
     image: envoyproxy/envoy-alpine:v1.20.0
+    ports:
+      - 80:10080
+      - 443:10443
     volumes:
       - ${PWD}/storage/conf/envoy:/etc/envoy
+    networks:
+      main: { }
+    dns:
+      - 8.8.8.8
+      - 4.2.2.4
+    restart: "always"
+
+  dns:
+    image: alphabet5/dnsmasq:latest
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+    command: "--listen-address=0.0.0.0 --bind-interfaces --address=/*/${PROXY_IP_ADDRESS}"
     networks:
       main: { }
     restart: "always"

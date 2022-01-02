@@ -1,11 +1,13 @@
 version: "2.3"
 services:
   proxy:
-    ports:
-      - 80:10080
-      - 443:10443
     depends_on:
       - app
+    restart: "no"
+
+  dns:
+    networks:
+      main: { }
     restart: "no"
 
   app:
